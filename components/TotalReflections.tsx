@@ -1,0 +1,67 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { LinearGradient } from "expo-linear-gradient";
+import { useEffect, useState } from "react";
+import { StyleSheet, Text, Image, View } from "react-native";
+
+export default function TotalReflections() {
+  const [total, setTotal] = useState(0);
+  useEffect(() => {
+    async function contarReflexoes() {
+      const stored = await AsyncStorage.getItem("@reflections");
+      const reflections = stored ? JSON.parse(stored) : [];
+      setTotal(reflections.length);
+    }
+
+    contarReflexoes();
+  }, []);
+
+  return (
+    <LinearGradient
+      colors={["#71D5E2CC", "#A4F5FFCC"]}
+      style={styles.reflection}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      locations={[0.6, 0.85]}
+    >
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <Text style={{ color: "white", fontWeight: "medium", fontSize: 20 }}>
+          Reflexões {"\n"}
+          <Text style={{ color: "#00000044" }}>Feitas</Text>
+        </Text>
+        <Image
+          source={require("../assets/reflection-icon.png")}
+          style={{ width: 48, height: 48 }}
+        />
+      </View>
+      <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+        <View style={styles.decorative} />
+        <Text style={styles.infos}>{total}</Text>
+        <Text style={styles.infos}>total</Text>
+      </View>
+    </LinearGradient>
+  );
+}
+
+const styles = StyleSheet.create({
+  reflection: {
+    padding: 16,
+    borderRadius: 16,
+    gap: 16,
+    width: "48%",
+  },
+  decorative: {
+    height: 27,
+    width: 2,
+    backgroundColor: "#E0F7FA",
+  },
+  infos: {
+    color: "white",
+    fontSize: 32,
+  },
+});

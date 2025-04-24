@@ -80,22 +80,6 @@ export default function AddReflection() {
           </View>
 
           <View style={styles.formContent}>
-            <TextInput
-              maxLength={20}
-              placeholder="Título da sua reflexão"
-              value={title}
-              onChangeText={setTitle}
-              style={styles.input}
-            />
-            <TextInput
-              multiline
-              numberOfLines={5}
-              maxLength={300}
-              placeholder="Faça sua reflexão"
-              value={reflection}
-              onChangeText={setReflection}
-              style={{ ...styles.input, height: 100 }}
-            />
             <DropDownPicker
               open={open}
               value={feelingValue}
@@ -104,6 +88,7 @@ export default function AddReflection() {
               setValue={setFeelingValue}
               setItems={setFeelings}
               style={styles.picker}
+              placeholder="Selecione o sentimento"
               placeholderStyle={{
                 color: "#B5B5B5",
               }}
@@ -114,6 +99,23 @@ export default function AddReflection() {
                 borderWidth: 0,
                 zIndex: 1000,
               }}
+            />
+            <TextInput
+              maxLength={20}
+              placeholder="Título da sua reflexão"
+              value={title}
+              onChangeText={setTitle}
+              style={styles.input}
+            />
+            <TextInput
+      
+              numberOfLines={5}
+              maxLength={300}
+              placeholder="Faça sua reflexão"
+              value={reflection}
+              onChangeText={setReflection}
+              style={{ ...styles.input,  }}
+              keyboardType="default"
             />
             <TouchableOpacity style={styles.btn} onPress={saveReflection}>
               <Text style={{ color: "white", fontWeight: "bold" }}>Salvar Relfexão</Text>

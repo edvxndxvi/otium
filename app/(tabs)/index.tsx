@@ -2,6 +2,9 @@ import React from "react";
 import { ImageBackground, Text, View, StyleSheet, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DailyPhrase from "../../components/DailyPhrase";
+import TotalReflections from "../../components/TotalReflections";
+import PositiveReflections from "../../components/PositiveReflections";
+import NegativeReflections from "../../components/NegativeReflections";
 
 export default function Home() {
   return (
@@ -19,7 +22,11 @@ export default function Home() {
           <Text style={{ color: "white", fontSize: 24, fontWeight: "bold" }}>
             Suas Reflexões em Números
           </Text>
-          <View style={styles.diaryContent}></View>
+          <View style={styles.diaryContent}>
+            <TotalReflections/>
+            <PositiveReflections/>
+            <NegativeReflections/>
+          </View>
         </View>
       </SafeAreaView>
     </ImageBackground>
@@ -37,5 +44,10 @@ const styles = StyleSheet.create({
   diaryContainer: {
     marginTop: 32,
   },
-  diaryContent: {},
+  diaryContent: {
+    marginTop: 16,
+    flexDirection:'row',
+    flexWrap:'wrap',
+    gap: 8
+  },
 });
