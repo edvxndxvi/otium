@@ -28,7 +28,7 @@ export default function Reflections() {
     async function getReflections() {
       const stored = await AsyncStorage.getItem("@reflections");
       if (stored) {
-        setReflections(JSON.parse(stored));
+        setReflections(JSON.parse(stored).reverse());
       }
     }
 
