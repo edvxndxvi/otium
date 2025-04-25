@@ -14,11 +14,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function Motivation() {
   const api_url = "https://zenquotes.io/api/random";
 
-  const [quote, setQuote] = useState<{ q: string }[]>([]);
+  const [quote, setQuote] = useState<{ q: string, a: string }[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   async function getQuote() {
-    if (isLoading) return; 
+    if (isLoading) return;
     setIsLoading(true);
     try {
       const response = await axios.get(api_url);
@@ -55,6 +55,17 @@ export default function Motivation() {
             }}
           >
             {quote[0]?.q}
+          </Text>
+          <Text
+            style={{
+              textAlign: "center",
+              fontWeight: "medium",
+              fontSize: 18,
+              color: "white",
+              marginTop: 16
+            }}
+          >
+            ― {quote[0]?.a}
           </Text>
         </View>
         <TouchableOpacity

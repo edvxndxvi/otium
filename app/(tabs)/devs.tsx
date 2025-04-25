@@ -9,6 +9,7 @@ import {
   Linking,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import DevCard from "../../components/DevCard";
 
 const profiles = [
   {
@@ -47,29 +48,7 @@ export default function Devs() {
 
         <View>
           {profiles.map((profile, index) => (
-            <View key={index} style={styles.card}>
-              <View style={styles.userInfo}>
-                <Image source={profile.image} style={styles.avatar} />
-                <View>
-                  <Text style={styles.name}>{profile.name}</Text>
-                  <Text style={styles.username}>{profile.username}</Text>
-                </View>
-              </View>
-              <View style={styles.links}>
-                <TouchableOpacity onPress={() => Linking.openURL(profile.linkedin)}>
-                  <Image
-                    source={require("../../assets/logo-linkedin.png")}
-                    style={styles.icon}
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => Linking.openURL(profile.github)}>
-                  <Image
-                    source={require("../../assets/logo-github.png")}
-                    style={styles.icon}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
+            <DevCard key={index} {...profile} />
           ))}
         </View>
       </SafeAreaView>
@@ -84,43 +63,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 10,
-  },
-  card: {
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
-    borderRadius: 16,
-    padding: 12,
-    marginBottom: 12,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  userInfo: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  avatar: {
-    width: 44,
-    height: 44,
-    borderRadius: 100,
-    marginRight: 10,
-  },
-  name: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  username: {
-    color: "#ddd",
-    fontSize: 13,
-  },
-  links: {
-    flexDirection: "row",
-    gap: 8,
-  },
-  icon: {
-    width: 24,
-    height: 24,
-    tintColor: "#fff",
-    marginLeft: 10,
   },
 });
