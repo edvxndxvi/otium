@@ -1,5 +1,4 @@
 import { useRouter } from "expo-router";
-import { ChevronLeft } from "lucide-react-native";
 import React, { useState } from "react";
 import {
   ImageBackground,
@@ -11,6 +10,7 @@ import {
   TextInput,
   Button,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DropDownPicker from "react-native-dropdown-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -72,7 +72,7 @@ export default function AddReflection() {
               }}
               onPress={() => router.push("/reflections")}
             >
-              <ChevronLeft size={18} color={"white"} />
+              <Ionicons name="arrow-back" size={18} color="white" />
             </TouchableOpacity>
             <Text style={{ color: "white", fontSize: 24, fontWeight: "bold" }}>
               Voltar

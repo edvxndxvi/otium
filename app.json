@@ -9,9 +9,9 @@
     "newArchEnabled": true,
     "scheme": "otium",
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/logo-splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#84BEFF"
     },
     "ios": {
       "supportsTablet": true

@@ -1,5 +1,4 @@
 import { useRouter } from "expo-router";
-import { Plus } from "lucide-react-native";
 import React, { useEffect, useState } from "react";
 import {
   ImageBackground,
@@ -13,6 +12,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ReflectionItem from "../../components/ReflectionItem";
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Reflections() {
   const [reflections, setReflections] = useState<
@@ -64,7 +64,7 @@ export default function Reflections() {
               }}
               onPress={() => router.push("/addReflection")}
             >
-              <Plus size={18} color={"white"} />
+              <Ionicons name="add" size={18} color="white" />
             </TouchableOpacity>
           </View>
           <FlatList

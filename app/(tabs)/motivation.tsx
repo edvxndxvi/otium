@@ -1,5 +1,4 @@
 import axios from "axios";
-import { RotateCcw } from "lucide-react-native";
 import { useEffect, useState } from "react";
 import {
   ImageBackground,
@@ -10,6 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Motivation() {
   const api_url = "https://zenquotes.io/api/random";
@@ -72,7 +72,7 @@ export default function Motivation() {
           onPress={getQuote}
           style={{ position: "absolute", bottom: 180, alignSelf: "center" }}
         >
-          <RotateCcw size={32} color={"white"} />
+          <Ionicons name="refresh" size={32} color="white" />
         </TouchableOpacity>
       </SafeAreaView>
     </ImageBackground>

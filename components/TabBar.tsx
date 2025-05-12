@@ -1,18 +1,13 @@
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import {
-  BookOpen,
-  Cloudy,
-  House,
-  LucideProps,
-  Quote,
-  UsersRound,
-} from "lucide-react-native";
-import { JSX } from "react";
+import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
-export default function TabBar({state,descriptors,navigation,}: BottomTabBarProps) {
+export default function TabBar({
+  state,
+  descriptors,
+  navigation,
+}: BottomTabBarProps) {
   type TabIconProps = {
     color: string;
     size?: number;
@@ -22,29 +17,32 @@ export default function TabBar({state,descriptors,navigation,}: BottomTabBarProp
   type IconComponent = React.ComponentType<TabIconProps>;
 
   const icons: Record<string, IconComponent> = {
-    index: ({ color, size = 24, ...props }) => (
-      <House color={color} size={size} {...props} />
+    index: ({ color, size = 24 }) => (
+      <Ionicons name="home-outline" color={color} size={size} />
     ),
-    reflections: ({ color, size = 24, ...props }) => (
-      <BookOpen color={color} size={size} {...props} />
+    reflections: ({ color, size = 24 }) => (
+      <Ionicons name="book-outline" color={color} size={size} />
     ),
-    breathing: ({ color, size = 42, ...props }) => (
-      <LinearGradient colors={['rgba(25, 145, 230, 0.8)', 'rgba(195, 217, 235, 0.8)']} style={styles.cloudIcon}>
-        <Cloudy color="white" size={size} {...props} />
+    breathing: ({ color, size = 42 }) => (
+      <LinearGradient
+        colors={["rgba(25, 145, 230, 0.8)", "rgba(195, 217, 235, 0.8)"]}
+        style={styles.cloudIcon}
+      >
+        <Ionicons name="cloud" color="white" size={size} />
       </LinearGradient>
     ),
-    motivation: ({ color, size = 24, ...props }) => (
-      <Quote color={color} size={size} {...props} />
+    motivation: ({ color, size = 24 }) => (
+      <Ionicons name="rose" color={color} size={size} />
     ),
-    devs: ({ color, size = 24, ...props }) => (
-      <UsersRound color={color} size={size} {...props} />
+    devs: ({ color, size = 24 }) => (
+      <Ionicons name="people-outline" color={color} size={size} />
     ),
   };
 
   return (
     <View style={styles.tabBar}>
-      {state.routes.map((route: any, index: any) => {
-        const { options } = descriptors[route.key as string];
+      {state.routes.map((route, index) => {
+        const { options } = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
@@ -53,6 +51,7 @@ export default function TabBar({state,descriptors,navigation,}: BottomTabBarProp
             : route.name;
 
         if (["_sitemap", "+not-found"].includes(route.name)) return null;
+
         const isFocused = state.index === index;
 
         const onPress = () => {
@@ -105,7 +104,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cloudIcon: {
-    padding: 8,
+    width: 60,
+    height: 60,
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 100,
     borderWidth: 2,
     borderColor: "#5798FB20",
