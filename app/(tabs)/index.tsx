@@ -1,25 +1,26 @@
 import React from "react";
-import { ImageBackground, Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DailyPhrase from "../../components/DailyPhrase";
 import TotalReflections from "../../components/TotalReflections";
 import PositiveReflections from "../../components/PositiveReflections";
 import NegativeReflections from "../../components/NegativeReflections";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Home() {
   return (
-    <ImageBackground
-      source={require("../../assets/gradient-bg.jpg")}
+    <LinearGradient
+      colors={["#789EFF", "#BEECFF"]}
       style={styles.background}
     >
       <SafeAreaView style={styles.container} >
         <Image
           source={require("../../assets/logo.png")}
-          style={{ marginVertical: 64, alignSelf: "center" }}
+          style={{ marginBottom: 32, alignSelf: "center" }}
         />
         <DailyPhrase />
         <View style={styles.diaryContainer}>
-          <Text style={{ color: "white", fontSize: 24, fontWeight: "bold" }}>
+          <Text style={{ color: "white", fontSize: 24, fontWeight: "medium" }}>
             Suas Reflexões em Números
           </Text>
           <View style={styles.diaryContent}>
@@ -29,7 +30,7 @@ export default function Home() {
           </View>
         </View>
       </SafeAreaView>
-    </ImageBackground>
+    </LinearGradient>
   );
 }
 

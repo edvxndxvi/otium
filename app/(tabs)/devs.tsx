@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DevCard from "../../components/DevCard";
+import { LinearGradient } from "expo-linear-gradient";
 
 const profiles = [
   {
@@ -36,14 +37,14 @@ const profiles = [
 ];
 export default function Devs() {    
   return (
-    <ImageBackground
-      source={require("../../assets/gradient-bg.jpg")}
+    <LinearGradient
+      colors={["#789EFF", "#BEECFF"]}
       style={styles.background}
     >
       <SafeAreaView style={styles.container}>
         <Image
           source={require("../../assets/logo.png")}
-          style={{ marginVertical: 64, alignSelf: "center" }}
+          style={{ marginBottom: 32, alignSelf: "center" }}
         />
 
         <View>
@@ -52,7 +53,7 @@ export default function Devs() {
           ))}
         </View>
       </SafeAreaView>
-    </ImageBackground>
+    </LinearGradient>
   );
 }
 

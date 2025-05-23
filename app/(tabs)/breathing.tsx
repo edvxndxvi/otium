@@ -1,15 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import { 
-  ImageBackground, 
   Text, 
   View, 
   Image, 
   StyleSheet, 
   Animated, 
   TouchableOpacity,
-  Easing
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Breathing() {
     const bubbleAnimation = useRef(new Animated.Value(1)).current;
@@ -73,7 +72,7 @@ export default function Breathing() {
                     setBreathingPhase("Pausa");
                     Animated.timing(bubbleAnimation, {
                         toValue: 1,
-                        duration: 2000,
+                        duration: 1500,
                         useNativeDriver: true,
                     }).start(({ finished }) => {
                         if (!finished || !isPlayingRef.current) return;
@@ -94,8 +93,8 @@ export default function Breathing() {
     }, []);
 
     return (
-        <ImageBackground
-            source={require("../../assets/gradient-bg.jpg")}
+        <LinearGradient
+            colors={["#789EFF", "#BEECFF"]}
             style={styles.background}
         >
             <SafeAreaView style={styles.container}>
@@ -122,7 +121,7 @@ export default function Breathing() {
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>
-        </ImageBackground>
+        </LinearGradient>
     );
 }
 
@@ -136,7 +135,7 @@ const styles = StyleSheet.create({
         paddingBottom: 80, 
     },
     logo: {
-        marginTop: 64,
+        marginBottom: 32,
         alignSelf: "center"
     },
     bubbleContainer: {

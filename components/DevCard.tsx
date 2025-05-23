@@ -9,7 +9,6 @@ export default function DevCard(props: any) {
         <Image source={props.image} style={styles.avatar} />
         <View>
           <Text style={styles.name}>{props.name}</Text>
-          <Text style={styles.username}>{props.username}</Text>
         </View>
       </View>
       <View style={styles.links}>
@@ -35,19 +34,19 @@ const styles = StyleSheet.create({
     card: {
       backgroundColor: "rgba(0, 0, 0, 0.1)",
       borderRadius: 16,
-      padding: 12,
+      padding: 16,
       marginBottom: 12,
-      flexDirection: "row",
+      gap: 24,
       justifyContent: "space-between",
       alignItems: "center",
     },
     userInfo: {
-      flexDirection: "row",
       alignItems: "center",
+      gap: 8,
     },
     avatar: {
-      width: 44,
-      height: 44,
+      width: 64,
+      height: 64,
       borderRadius: 100,
       marginRight: 10,
     },

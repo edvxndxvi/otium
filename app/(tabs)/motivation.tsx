@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Motivation() {
   const api_url = "https://zenquotes.io/api/random";
@@ -36,16 +37,16 @@ export default function Motivation() {
   }, []);
 
   return (
-    <ImageBackground
-      source={require("../../assets/gradient-bg.jpg")}
+    <LinearGradient
+      colors={["#789EFF", "#BEECFF"]}
       style={styles.background}
     >
       <SafeAreaView style={styles.container}>
         <Image
           source={require("../../assets/logo.png")}
-          style={{ marginVertical: 64, alignSelf: "center" }}
+          style={{ marginBottom: 32, alignSelf: "center" }}
         />
-        <View style={{ marginTop: 150 }}>
+        <View style={{ flex: 1, position: "absolute", top: "50%", }}>
           <Text
             style={{
               textAlign: "center",
@@ -75,7 +76,7 @@ export default function Motivation() {
           <Ionicons name="refresh" size={32} color="white" />
         </TouchableOpacity>
       </SafeAreaView>
-    </ImageBackground>
+    </LinearGradient>
   );
 }
 

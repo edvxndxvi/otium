@@ -13,6 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ReflectionItem from "../../components/ReflectionItem";
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Reflections() {
   const [reflections, setReflections] = useState<
@@ -36,16 +37,16 @@ export default function Reflections() {
   }, []);
 
   return (
-    <ImageBackground
-      source={require("../../assets/gradient-bg.jpg")}
+    <LinearGradient
+      colors={["#789EFF", "#BEECFF"]}
       style={styles.background}
     >
       <SafeAreaView style={styles.container}>
         <Image
           source={require("../../assets/logo.png")}
-          style={{ marginVertical: 64, alignSelf: "center" }}
+          style={{ marginBottom: 32, alignSelf: "center" }}
         />
-        <View style={styles.reflectionsContainer}>
+        <View>
           <View
             style={{
               alignItems: "center",
@@ -53,18 +54,13 @@ export default function Reflections() {
               justifyContent: "space-between",
             }}
           >
-            <Text style={{ color: "white", fontSize: 24, fontWeight: "bold" }}>
+            <Text style={{ color: "white", fontSize: 24, fontWeight: "medium" }}>
               Reflexões
             </Text>
             <TouchableOpacity
-              style={{
-                backgroundColor: "#00000010",
-                padding: 12,
-                borderRadius: 100,
-              }}
               onPress={() => router.push("/addReflection")}
             >
-              <Ionicons name="add" size={18} color="white" />
+              <Ionicons name="add" size={32} color="white" />
             </TouchableOpacity>
           </View>
           <FlatList
@@ -82,7 +78,7 @@ export default function Reflections() {
           />
         </View>
       </SafeAreaView>
-    </ImageBackground>
+    </LinearGradient>
   );
 }
 
@@ -93,8 +89,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 10,
-  },
-  reflectionsContainer: {
-    marginTop: 32,
-  },
+  }
 });
