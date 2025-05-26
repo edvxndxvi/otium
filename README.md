@@ -1,6 +1,24 @@
-# 📱 OTIUM
+# 🌸 OTIUM - Autocuidado e Gestão da Ansiedade
 
 <img src="assets/readme-picture.jpg" alt="Readme Image">
+
+# O que é Otium?
+
+Otium é um aplicativo mobile desenvolvido em React Native com o objetivo de auxiliar no autocuidado e na gestão da ansiedade de forma prática e intuitiva. O app oferece recursos que incentivam a reflexão pessoal, o monitoramento emocional e técnicas simples de relaxamento.
+
+## ✨ Funcionalidades
+
+- **Registro de Reflexões**:
+Permite ao usuário adicionar reflexões diárias, associando a cada uma delas um sentimento — positivo ou negativo — para ajudar no autoconhecimento e acompanhamento do estado emocional.
+
+- **Painel de Estatísticas**:
+Na tela inicial, o usuário visualiza um resumo com o total de reflexões cadastradas, além de uma contagem separada entre reflexões positivas e negativas, promovendo uma visão clara da sua evolução emocional ao longo do tempo.
+
+- **Exercício de Respiração Guiada**:
+Uma funcionalidade interativa composta por uma bolinha animada que expande e contrai no ritmo de uma respiração calma e controlada. Ideal para ajudar a reduzir a ansiedade em momentos de tensão.
+
+- **Frases Motivacionais**:
+Uma página dedicada com diversas frases motivacionais e inspiradoras, pensadas para oferecer conforto e ânimo em momentos difíceis.
 
 ## 🚀 Instalando dependências
 
