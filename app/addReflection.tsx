@@ -1,14 +1,12 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-  ImageBackground,
   StyleSheet,
   Text,
   View,
   Image,
   TouchableOpacity,
   TextInput,
-  Button,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -28,6 +26,10 @@ export default function AddReflection() {
     { label: "Negativo", value: "negativo" },
   ]);
 
+  function generateId() {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+  }
+
   async function saveReflection() {
     const trimmedTitle = title.trim();
     const trimmedReflection = reflection.trim();
@@ -44,6 +46,7 @@ export default function AddReflection() {
     }
 
     reflections.push({
+      id: generateId(),
       title: trimmedTitle,
       reflection: trimmedReflection,
       feeling: feelingValue,
@@ -54,7 +57,6 @@ export default function AddReflection() {
 
     router.push("/reflections");
   }
-
   return (
     <LinearGradient colors={["#789EFF", "#BEECFF"]} style={styles.background}>
       <SafeAreaView style={styles.container}>

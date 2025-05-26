@@ -1,7 +1,6 @@
 import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import {
-  ImageBackground,
   StyleSheet,
   Text,
   View,
@@ -12,17 +11,19 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ReflectionItem from "../../components/ReflectionItem";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function Reflections() {
   const [reflections, setReflections] = useState<
     {
+      id: string;
       reflection: string;
       feeling: string;
       title: string;
     }[]
   >([]);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -36,11 +37,14 @@ export default function Reflections() {
     getReflections();
   }, []);
 
+  async function deleteReflection(id: string) {
+    const newReflections = reflections.filter((item) => item.id !== id);
+    setReflections(newReflections);
+    await AsyncStorage.setItem("@reflections", JSON.stringify(newReflections));
+  }
+
   return (
-    <LinearGradient
-      colors={["#789EFF", "#BEECFF"]}
-      style={styles.background}
-    >
+    <LinearGradient colors={["#789EFF", "#BEECFF"]} style={styles.background}>
       <SafeAreaView style={styles.container}>
         <Image
           source={require("../../assets/logo.png")}
@@ -54,24 +58,27 @@ export default function Reflections() {
               justifyContent: "space-between",
             }}
           >
-            <Text style={{ color: "white", fontSize: 24, fontWeight: "medium" }}>
+            <Text
+              style={{ color: "white", fontSize: 24, fontWeight: "medium" }}
+            >
               Reflexões
             </Text>
-            <TouchableOpacity
-              onPress={() => router.push("/addReflection")}
-            >
+            <TouchableOpacity onPress={() => router.push("/addReflection")}>
               <Ionicons name="add" size={32} color="white" />
             </TouchableOpacity>
           </View>
           <FlatList
-            style={{ marginTop: 32, height: 430 }}
+            style={{ marginTop: 32, height: "100%" }}
             data={reflections}
+            keyExtractor={(item) => item.id}
             renderItem={({ item }) => {
               return (
                 <ReflectionItem
+                  id={item.id}
                   title={item.title}
                   reflection={item.reflection}
                   feeling={item.feeling}
+                  onDelete={deleteReflection}
                 />
               );
             }}
@@ -89,5 +96,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 10,
-  }
+  },
 });
