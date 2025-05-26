@@ -1,11 +1,14 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { LinearGradient } from "expo-linear-gradient";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
+import { useFocusEffect } from '@react-navigation/native';
 import { StyleSheet, Text, Image, View } from "react-native";
 
 export default function TotalReflections() {
   const [total, setTotal] = useState(0);
-  useEffect(() => {
+
+  useFocusEffect(
+  useCallback(() => {
     async function contarReflexoes() {
       const stored = await AsyncStorage.getItem("@reflections");
       const reflections = stored ? JSON.parse(stored) : [];
@@ -13,7 +16,8 @@ export default function TotalReflections() {
     }
 
     contarReflexoes();
-  }, []);
+  }, [])
+  );
 
   return (
     <LinearGradient
